@@ -36,7 +36,7 @@ namespace SpriteBitcher
 
 			if (filePaths.Count() != 0 && Int32.TryParse(tbx_sheetRows.Text, out _sheetRows) && Int32.TryParse(tbx_sheetCols.Text, out _sheetCols))
 			{
-				Image _img = Stitcher.StitchFromImgPaths(filePaths.ToArray(), _sheetRows, _sheetCols, out _frameWidth, out _frameHeight);
+				Image _img = Stitcher.StitchFromImgPaths(filePaths, _sheetRows, _sheetCols, out _frameWidth, out _frameHeight);
 
 				pbx_stitchPreview.Image = _img;
 				lbl_outputSizeVw.Text = _img.Width + " x " + _img.Height;
@@ -98,7 +98,7 @@ namespace SpriteBitcher
 				}
 
 				// Save the newly-stitched spritesheet out to a file
-				Image _img = Stitcher.StitchFromImgPaths(filePaths.ToArray(), Int32.Parse(tbx_sheetRows.Text), Int32.Parse(tbx_sheetCols.Text));
+				Image _img = Stitcher.StitchFromImgPaths(filePaths, Int32.Parse(tbx_sheetRows.Text), Int32.Parse(tbx_sheetCols.Text));
 				_img.Save(sfd_spritesheetSaver.FileName, _format);
 			}
 		}

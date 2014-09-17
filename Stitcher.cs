@@ -8,19 +8,19 @@ namespace SpriteStitcher
 {
 	static class Stitcher
 	{
-		public static Bitmap StitchFromImgPaths(string[] imgPaths, int sheetRows, int sheetCols)
+		public static Bitmap StitchFromImgPaths(List<string> imgPaths, int sheetRows, int sheetCols)
 		{
 			int _maxSpriteWidth = 0;
 			int _maxSpriteHeight = 0;
 			return stitch(imgPaths, sheetRows, sheetCols, out _maxSpriteWidth, out _maxSpriteHeight);
 		}
 
-		public static Bitmap StitchFromImgPaths(string[] imgPaths, int sheetRows, int sheetCols, out int maxSpriteWidth, out int maxSpriteHeight)
+		public static Bitmap StitchFromImgPaths(List<string> imgPaths, int sheetRows, int sheetCols, out int maxSpriteWidth, out int maxSpriteHeight)
 		{
 			return stitch(imgPaths, sheetRows, sheetCols, out maxSpriteWidth, out maxSpriteHeight);
 		}
 
-		private static Bitmap stitch(string[] imgPaths, int sheetRows, int sheetCols, out int maxSpriteWidth, out int maxSpriteHeight)
+		private static Bitmap stitch(List<string> imgPaths, int sheetRows, int sheetCols, out int maxSpriteWidth, out int maxSpriteHeight)
 		{
 			// Find all images in the current directory
 			if (imgPaths.Count() != 0)
@@ -47,15 +47,15 @@ namespace SpriteStitcher
 				}
 
 				// Build the composite image (the sprite sheet)
-				Bitmap _composite = new Bitmap(maxSpriteWidth * sheetRows, maxSpriteHeight * sheetCols);
+				Bitmap _composite = new Bitmap(maxSpriteWidth * sheetCols, maxSpriteHeight * sheetRows);
 				using (Graphics _graphics = Graphics.FromImage(_composite))
 				{
-					for (int _imgCount = 0; _imgCount < imgPaths.Count(); _imgCount++)
+					for (int _imgCount = 0; _imgCount < imgPaths.Count() && _imgCount < (sheetCols * sheetRows); _imgCount++)
 					{
 						string _imgPath = imgPaths.ElementAt(_imgCount);
 						Bitmap _image = new Bitmap(_imgPath);
 
-						int _drawX = (_imgCount % sheetRows) * maxSpriteWidth;
+						int _drawX = (_imgCount % sheetCols) * maxSpriteWidth;
 						int _drawY = (_imgCount / sheetCols) * maxSpriteHeight;
 
 						_graphics.DrawImage(
