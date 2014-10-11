@@ -259,7 +259,7 @@
 			this.Controls.Add(this.pnl_stitchPreview);
 			this.Controls.Add(this.panel1);
 			this.Name = "StitchForm";
-			this.Text = "SpriteBitcher";
+			this.Text = "SpriteStitcher";
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			this.pnl_stitchPreview.ResumeLayout(false);
