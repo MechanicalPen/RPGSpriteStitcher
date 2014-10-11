@@ -218,7 +218,8 @@
 			// ofd_spriteChooser
 			// 
 			this.ofd_spriteChooser.FileName = "openFileDialog1";
-			this.ofd_spriteChooser.Filter = "Image Files (*.bmp, *.jpg, *.jpeg, *.png, *.gif)|*.bmp;*.jpg;*.jpeg;*.png;*.gif";
+			this.ofd_spriteChooser.Filter = "Image Files (*.bmp, *.jpg, *.jpeg, *.png, *.gif, *.tif)|*.bmp;*.jpg;*.jpeg;*.png;" +
+    "*.gif;*.tif";
 			this.ofd_spriteChooser.Multiselect = true;
 			this.ofd_spriteChooser.Title = "Choose a bunch of sprites";
 			// 

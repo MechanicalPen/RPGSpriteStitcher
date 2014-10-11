@@ -95,6 +95,9 @@ namespace SpriteBitcher
 					case ".gif":
 						_format = ImageFormat.Gif;
 						break;
+					case ".tif":
+						_format = ImageFormat.Tiff;
+						break;
 				}
 
 				// Save the newly-stitched spritesheet out to a file
