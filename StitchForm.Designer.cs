@@ -41,9 +41,6 @@
 			this.btn_saveOutput = new System.Windows.Forms.Button();
 			this.tbx_sheetRows = new System.Windows.Forms.TextBox();
 			this.lbl_sheetRows = new System.Windows.Forms.Label();
-			this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-			this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-			this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
 			this.ofd_spriteChooser = new System.Windows.Forms.OpenFileDialog();
 			this.sfd_spritesheetSaver = new System.Windows.Forms.SaveFileDialog();
 			this.pnl_stitchPreview = new System.Windows.Forms.Panel();
@@ -70,7 +67,6 @@
 			this.panel1.Controls.Add(this.btn_saveOutput);
 			this.panel1.Controls.Add(this.tbx_sheetRows);
 			this.panel1.Controls.Add(this.lbl_sheetRows);
-			this.panel1.Controls.Add(this.shapeContainer1);
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(984, 100);
@@ -185,36 +181,6 @@
 			this.lbl_sheetRows.TabIndex = 0;
 			this.lbl_sheetRows.Text = "Rows";
 			// 
-			// shapeContainer1
-			// 
-			this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-			this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-			this.shapeContainer1.Name = "shapeContainer1";
-			this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape2,
-            this.lineShape1});
-			this.shapeContainer1.Size = new System.Drawing.Size(984, 100);
-			this.shapeContainer1.TabIndex = 7;
-			this.shapeContainer1.TabStop = false;
-			// 
-			// lineShape2
-			// 
-			this.lineShape2.BorderColor = System.Drawing.SystemColors.ControlDark;
-			this.lineShape2.Name = "lineShape2";
-			this.lineShape2.X1 = 217;
-			this.lineShape2.X2 = 217;
-			this.lineShape2.Y1 = 10;
-			this.lineShape2.Y2 = 90;
-			// 
-			// lineShape1
-			// 
-			this.lineShape1.BorderColor = System.Drawing.SystemColors.ControlDark;
-			this.lineShape1.Name = "lineShape1";
-			this.lineShape1.X1 = 475;
-			this.lineShape1.X2 = 475;
-			this.lineShape1.Y1 = 10;
-			this.lineShape1.Y2 = 90;
-			// 
 			// ofd_spriteChooser
 			// 
 			this.ofd_spriteChooser.FileName = "openFileDialog1";
@@ -282,9 +248,6 @@
 		private System.Windows.Forms.Button btn_saveOutput;
 		private System.Windows.Forms.TextBox tbx_sheetRows;
 		private System.Windows.Forms.Label lbl_sheetRows;
-		private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-		private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
-		private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
 		private System.Windows.Forms.Button btn_chooseSprites;
 		private System.Windows.Forms.OpenFileDialog ofd_spriteChooser;
 		private System.Windows.Forms.SaveFileDialog sfd_spritesheetSaver;
