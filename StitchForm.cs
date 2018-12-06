@@ -16,6 +16,14 @@ namespace SpriteBitcher
 	{
 		private List<string> filePaths;
 
+        private int swapIndexA = -1;
+        private int swapIndexB = -1;
+
+        private int sheetRows = 0;
+        private int sheetCols = 0;
+        private int frameWidth = 0;
+        private int frameHeight = 0;
+
 		public StitchForm()
 		{
 			InitializeComponent();
@@ -29,18 +37,14 @@ namespace SpriteBitcher
 
 		public void UpdateSpritesheetResourcesUi()
 		{
-			int _sheetRows;
-			int _sheetCols;
-			int _frameWidth;
-			int _frameHeight;
 
-			if (filePaths.Count() != 0 && Int32.TryParse(tbx_sheetRows.Text, out _sheetRows) && Int32.TryParse(tbx_sheetCols.Text, out _sheetCols))
+			if (filePaths.Count() != 0 && Int32.TryParse(tbx_sheetRows.Text, out sheetRows) && Int32.TryParse(tbx_sheetCols.Text, out sheetCols))
 			{
-				Image _img = Stitcher.StitchFromImgPaths(filePaths, _sheetRows, _sheetCols, out _frameWidth, out _frameHeight);
+				Image _img = Stitcher.StitchFromImgPaths(filePaths, sheetRows, sheetCols, out frameWidth, out frameHeight);
 
 				pbx_stitchPreview.Image = _img;
 				lbl_outputSizeVw.Text = _img.Width + " x " + _img.Height;
-				lbl_frameSizeVw.Text = _frameWidth + " x " + _frameHeight;
+				lbl_frameSizeVw.Text = frameWidth + " x " + frameHeight;
 			}
 		}
 
@@ -77,11 +81,14 @@ namespace SpriteBitcher
 			if (_result == System.Windows.Forms.DialogResult.OK)
 			{
 				string _extension = Path.GetExtension(sfd_spritesheetSaver.FileName);
-				ImageFormat _format = ImageFormat.Bmp;
+				ImageFormat _format = ImageFormat.Png;
 
 				switch (_extension.ToLower())
 				{
-					case ".jpg":
+                    case ".bmp":
+                        _format = ImageFormat.Bmp;
+                        break;
+                    case ".jpg":
 						// ToDo: Save as JPEG
 						_format = ImageFormat.Jpeg;
 						break;
@@ -110,5 +117,51 @@ namespace SpriteBitcher
 		{
 			//TODO: Save JSON file mapping image inputs to output
 		}
-	}
+
+        private int getPictureIndexFromXY(int x, int y)
+        {
+            // check bounds so we don't crash
+
+            int selectedFrameRow = x / frameWidth;
+            int selectedFrameCol = y / frameHeight;
+
+            int selectedFrameIndex = selectedFrameCol * sheetCols + selectedFrameRow;
+            // we'll catch swap index b on mouseup.
+            return selectedFrameIndex;
+        }
+
+        public static void Swap<T>(IList<T> list, int indexA, int indexB)
+        {
+            T tmp = list[indexA];
+            list[indexA] = list[indexB];
+            list[indexB] = tmp;
+        }
+
+        private void pbx_stitchPreview_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (filePaths.Count > 0)
+            {
+                // we'll catch swap index b on mouseup.
+                swapIndexA = getPictureIndexFromXY(e.X, e.Y);
+            }
+
+        }
+
+        private void pbx_stitchPreview_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (filePaths.Count > 0)
+            {
+                // we'll catch swap index b on mouseup.
+                swapIndexB = getPictureIndexFromXY(e.X, e.Y);
+            }
+
+            if (swapIndexA > -1 && swapIndexA < filePaths.Count && swapIndexB > -1 && swapIndexB < filePaths.Count)
+            {
+                Swap(filePaths, swapIndexA, swapIndexB);
+                swapIndexA = -1;
+                swapIndexB = -1;
+                UpdateSpritesheetResourcesUi();
+            }
+        }
+    }
 }

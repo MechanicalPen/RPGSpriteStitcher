@@ -55,16 +55,28 @@ namespace SpriteStitcher
 						string _imgPath = imgPaths.ElementAt(_imgCount);
 						Bitmap _image = new Bitmap(_imgPath);
 
-						int _drawX = (_imgCount % sheetCols) * maxSpriteWidth;
-						int _drawY = (_imgCount / sheetCols) * maxSpriteHeight;
+                        // we want to center smaller sprites to the bottom middle.
+                        int myActualWidth = _image.Width;
+                        int myActualHeight = _image.Height;
+
+						int frameX0 = (_imgCount % sheetCols) * maxSpriteWidth;
+						int framey0 = (_imgCount / sheetCols) * maxSpriteHeight;
+
+                        // since 0,0 is the top left of the bitmap, we need to add the difference
+                        // to the x,y position of the frame. one half the x differenence will
+                        // center the image on the X axis. ALL of the y difference will place the
+                        // image at the bottom of the frame.
+
+                        int _drawX = frameX0 + (maxSpriteWidth - myActualWidth) / 2;
+                        int _drawY = framey0 + (maxSpriteHeight - myActualHeight);
 
 						_graphics.DrawImage(
 							_image,
 							_drawX,
 							_drawY,
-							maxSpriteWidth,
-							maxSpriteHeight
-						);
+                            myActualWidth,
+                            myActualHeight
+                        );
 					}
 				}
 				return _composite;
