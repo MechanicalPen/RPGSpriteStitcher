@@ -114,10 +114,10 @@
             this.cbx_template.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_template.FormattingEnabled = true;
             this.cbx_template.Items.AddRange(new object[] {
-            "XP 4x4 character style",
-            "MV 4x3 character style",
-            "MV 16x12 character style",
-            "MV 9x6 SV Battler style",
+            "4x4 character style [XP]",
+            "4x3 character style [VX MV MZ]",
+            "16x12 multi-character style [VX MV MZ]",
+            "9x6 SV Battler style [MV MZ]",
             "Custom"});
             this.cbx_template.Location = new System.Drawing.Point(83, 20);
             this.cbx_template.Name = "cbx_template";
