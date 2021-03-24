@@ -116,8 +116,8 @@
             this.cbx_template.Items.AddRange(new object[] {
             "4x4 character style [XP]",
             "4x3 character style [VX MV MZ]",
-            "16x12 multi-character style [VX MV MZ]",
-            "9x6 SV Battler style [MV MZ]",
+            "8x12 multi-character style [VX MV MZ]",
+            "6x9 SV Battler style [MV MZ]",
             "Custom"});
             this.cbx_template.Location = new System.Drawing.Point(83, 20);
             this.cbx_template.Name = "cbx_template";

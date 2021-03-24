@@ -290,15 +290,15 @@ namespace SpriteBitcher
                 tbx_sheetRows.Text = "4";
                 tbx_sheetCols.Text = "3";
             }
-            else if ((string)cbx_template.SelectedItem == "16x12 multi-character style [VX MV MZ]")
+            else if ((string)cbx_template.SelectedItem == "8x12 multi-character style [VX MV MZ]")
             {
-                tbx_sheetRows.Text = "16";
+                tbx_sheetRows.Text = "8";
                 tbx_sheetCols.Text = "12";
             }
-            else if ((string)cbx_template.SelectedItem == "9x6 SV Battler style [MV MZ]")
+            else if ((string)cbx_template.SelectedItem == "6x9 SV Battler style [MV MZ]")
             {
-                tbx_sheetRows.Text = "9";
-                tbx_sheetCols.Text = "6";
+                tbx_sheetRows.Text = "6";
+                tbx_sheetCols.Text = "9";
             }
             else if ((string)cbx_template.SelectedItem == "")
             {
